@@ -1,0 +1,51 @@
+{%extends 'index.html'%} {%load static%} {%block content%}
+
+
+
+
+<div class="row container-fluid mt-4">
+
+
+
+     {% if available_evaluations == 0 %}
+         <h3>Evaluations not opened yet</h3>
+    {% endif %}
+
+
+
+       {% if evaluations %}
+            {% for evaluation in evaluations %}
+
+
+  <div id="infobox{{ evaluation.id}}" class="col-xl-3 col-lg-3 layout-spacing " >
+    <div class="statbox widget box box-shadow ">
+      <div class="widget-content widget-content-area">
+        <div class="infobox-1">
+          <div class="info-icon">
+              <span class="badge badge-warning mb-2">Not Evaluated</span>
+          </div>
+          <a class="info-link" href="{% url 'submit_evaluation' evaluation.pk %}"> <h5 class="info-heading text-primary">{{evaluation.course.name}}</h5></a>
+          <p class="info-text">{{evaluation.facilitator}}</p>
+          <p class="info-text">{{evaluation.course.course_code}} ({{evaluation.course.course_group |title  }})</p>
+          <p class="info-text">{{evaluation.course.description}}</p>
+          <a class="info-link text-info" href="{% url 'submit_evaluation' evaluation.pk %}">Evaluate<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="feather feather-arrow-right">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+           {% else %}
+           <h6 class="text-muted">No Course available for evaluation</h6>
+{% endif %}
+</div>
+
+
+
+
+{%endblock%}

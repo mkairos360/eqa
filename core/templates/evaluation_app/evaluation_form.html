@@ -1,0 +1,608 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+
+    <div class="">
+        <div class="row layout-top-spacing" id="cancel-row">
+            <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+                <div class="widget-content widget-content-area br-6">
+                    <div class="widget-header">
+                        <div class="row mx-4">
+                            <div class="">
+                                <h5 class="text-primary">Course: {{ evaluation.course }}</h5>
+                                <h6 class="text-mute">Course Facilitator: {{ evaluation.facilitator }}</h6>
+                                <h6>Course Summary </h6>
+                                {% if evaluation_form.errors %}
+                                        <div class="alert alert-light-danger">
+                                        Please ensure you have selected all fields. All fields are required
+                                        </div>
+
+                                {% endif %}
+                                <p>
+                                    {{ evaluation.course.description }}
+                                </p>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                    <div>
+                        <form method="post" id="example-basic" novalidate>
+                            {% csrf_token %}
+                            <h3>Curriculum</h3>
+                            <section>
+
+                                <div class="mb-4 ">
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_beginning_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_beginning_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_course_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_course_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_lecture_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_lecture_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_outcomes_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_outcomes_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_procedures_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_procedures_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="text-dark">{{ evaluation_form.curriculum_feedback_books_answer.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.curriculum_feedback_books_answer %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+
+                            </section>
+                            <h3>Attendance</h3>
+                            <section>
+                                <div class="mb-4">
+                                    <h5 class="text-dark">{{ evaluation_form.attendance_schedule.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.attendance_schedule %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.attendance_punctuality.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.attendance_punctuality %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.attendance_presence.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.attendance_presence %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </section>
+                            <h3>Delivery</h3>
+                            <section>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.delivery_enthusiasm.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.delivery_enthusiasm %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.delivery_sequence.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.delivery_sequence %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="text-dark">{{ evaluation_form.delivery_organization.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.delivery_organization %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div class="mb-4">
+
+
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_clarity.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_clarity %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_contents.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_contents %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="mb-4">
+
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_responsiveness.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_responsiveness %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+
+                                    <div class="mb-4">
+
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_achievements.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_achievements %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_innovation.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_innovation %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+
+                                    <div class="mb-4">
+
+
+                                        <h5 class="text-dark">{{ evaluation_form.delivery_theory_practices.label }}</h5>
+                                        <div class="">
+
+                                            {% for radio in evaluation_form.delivery_theory_practices %}
+                                                <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                    {{ radio.choice_label }}
+                                                    <span class="radio mx-5">{{ radio.tag }}</span>
+                                                </label>
+                                            {% endfor %}
+                                        </div>
+
+                                    </div>
+
+
+                            </section>
+                            <h3>Assignments</h3>
+                            <section>
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.assignments_relevance.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.assignments_relevance %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.assignments_promptitude.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.assignments_promptitude %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.assignments_feedback.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.assignments_feedback %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.assignments_guidance.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.assignments_guidance %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <h3>Interactions</h3>
+                            <section>
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.interaction_availability.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.interaction_availability %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.interaction_help.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.interaction_help %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.interaction_fairness.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.interaction_fairness %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+
+                            </section>
+
+
+                            <h3>Environment</h3>
+                            <section>
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_classroom_size.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_classroom_size %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_seats.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_seats %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_audio_visual_equip.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_audio_visual_equip %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_public_address.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_public_address %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_books.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_books %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_computers.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_computers %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_internet.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_internet %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_air_conditioning.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_air_conditioning %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+
+                                <div class="mb-4">
+
+
+                                    <h5 class="text-dark">{{ evaluation_form.environment_secretariat.label }}</h5>
+                                    <div class="">
+
+                                        {% for radio in evaluation_form.environment_secretariat %}
+                                            <label for="{{ radio.id_for_label }}" class="text-primary">
+                                                {{ radio.choice_label }}
+                                                <span class="radio mx-5">{{ radio.tag }}</span>
+                                            </label>
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+
+
+                            </section>
+
+                            <h3>Confirmation</h3>
+                            <section>
+
+                                <h4 class="text-danger">Confirm your submission by checking the box and clicking the
+                                    submit button below</h4>
+                                <div class="mb-4">
+                                    {{ evaluation_form.is_evaluated.label }}
+                                    {{ evaluation_form.is_evaluated }}
+                                </div>
+
+
+                                <button type="submit" class="btn btn-success mb-4 mr-2 btn-lg btn-success">Submit
+                                </button>
+
+                            </section>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}

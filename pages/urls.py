@@ -1,0 +1,1 @@
+# handler404 = "mysite.views.page_not_found_view"
